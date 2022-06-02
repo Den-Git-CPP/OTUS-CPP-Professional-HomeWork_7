@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 
 if ($ENV{GITHUB_RUN_NUMBER})
-    project (Command_Packetge VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+    project (BULK VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 else()
-    project (Command_Packetge VERSION 0.0.1)
+    project (BULK VERSION 0.0.1)
 endif()
 
 configure_file(version.h.in version.h)
@@ -50,12 +50,12 @@ configure_file(version.h.in version.h)
 #   endif()
 # endif()
 
-file(GLOB command_packetge_cpp
+file(GLOB bulk_cpp
  "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp"
 )
 
-add_executable(command_packetge_cli 
-${command_packetge_cpp}
+add_executable(bulk 
+${bulk_cpp}
 )
 
 # add_executable(g_test_packetge 
@@ -63,14 +63,14 @@ ${command_packetge_cpp}
 # test/test.h
 # test/test.cpp)
 
-set_target_properties(command_packetge_cli 
+set_target_properties(bulk 
 # g_test__packetge
 PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 
-target_include_directories(command_packetge_cli
+target_include_directories(bulk
     PRIVATE 
     include
     "${CMAKE_BINARY_DIR}"
@@ -79,7 +79,7 @@ target_include_directories(command_packetge_cli
 #    gtest gtest_main
 # )
 if (MSVC)
-    target_compile_options(command_packetge_cli 
+    target_compile_options(bulk 
     PRIVATE
     /EHsc /W4 /WX
         )    
@@ -88,7 +88,7 @@ if (MSVC)
     # /EHsc /W4 /WX
     #     )   
  else ()
-    target_compile_options(command_packetge_cli 
+    target_compile_options(bulk 
     PRIVATE
     -Wextra -pedantic -Werror
         )
@@ -101,7 +101,7 @@ endif()
 # enable_testing()
 # add_test(test_version g_test_packetge)
 
-# install(TARGETS command_packetge_cli RUNTIME DESTINATION bin)
+# install(TARGETS bulk RUNTIME DESTINATION bin)
 
 # set(CPACK_GENERATOR DEB)
 # set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
