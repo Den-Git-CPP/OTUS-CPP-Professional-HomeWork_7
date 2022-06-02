@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	{
 		num_commands = std::stoi(argv[1]);
 		std::string line_commands;
-		while (!std::cin.eof() && line_commands != "EOF") {
+		while (std::cin) {
 			for (int i = 0; i < num_commands; i++) {
 				std::getline(std::cin, line_commands);
 				if (!std::cin.eof() && line_commands != "EOF") {
