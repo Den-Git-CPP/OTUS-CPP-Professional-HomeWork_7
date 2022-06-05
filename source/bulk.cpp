@@ -1,0 +1,25 @@
+﻿#include <iostream>
+#include <sstream>
+
+#include "Accumulator_Commands.h"
+
+int main(int argc, char** argv) {
+	int number_commands_in_pull{ 0 };
+	if (argc <= 1) {
+		std::cout << "Incorrect number of arguments";
+	}
+	else {
+		try {
+			number_commands_in_pull = std::stoi(argv[1]);
+			if (number_commands_in_pull <= 0) {
+				std::cout << "Number of commands in bulk must be positive";
+			}
+		}
+		catch (const std::exception& error_command) {
+			std::cerr << error_command.what();
+		}
+	}
+
+	Accumulator_Commands accumulator(number_commands_in_pull);
+	accumulator.work_with_commands();
+}
