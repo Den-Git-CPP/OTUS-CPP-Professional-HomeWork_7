@@ -2,70 +2,95 @@
 #include <sstream>
 #include <vector>
 
-void print_bulk(const std::vector<std::string>& v_all_commands) {
-	if (!v_all_commands.empty()) {
+class Accumulator_Commands {
+public:
+	Accumulator_Commands(int number_commands)
+		: _number_commands {number_commands} {};
+
+	~Accumulator_Commands() {};
+	//void add_one_command();
+	//void add_pull_command();
+	void out_bulk();
+	void clear_bulk();
+	void out_and_clear_bulk();
+	void process_commands();
+private:
+	int _number_commands {0};
+	int number_brackets {0};
+	std::string _line_commands {0};
+	std::vector<std::string>_all_commands;
+};
+void Accumulator_Commands::out_bulk() {
+	if (!_all_commands.empty()) {
 		std::cout << "bulk:";
-		for (auto elem : v_all_commands) {
+		for (auto elem : _all_commands) {
 			std::cout << elem << " ";
 		};
 	}
 	std::cout << '\n';
+}
+void Accumulator_Commands::clear_bulk() {
+	_all_commands.clear();
+};
+void Accumulator_Commands::out_and_clear_bulk() {
+	out_bulk();
+	clear_bulk();
+};
+void Accumulator_Commands::process_commands() {
+	while (std::cin) {
+		for (int i = 0; i < _number_commands; i++) {
+			std::getline(std::cin, _line_commands);
+
+			if (std::cin.eof()) { break; }
+
+			if (_line_commands == "{") {
+				if (number_brackets == 0) {
+					out_and_clear_bulk();
+				}
+				number_brackets++;
+			}
+
+			if (_line_commands == "}") {
+				number_brackets--;
+				if (number_brackets == 0) {
+					out_and_clear_bulk();
+				}
+			}
+
+			if ((_line_commands != "{") &&
+				(_line_commands != "}") &&
+				(!_line_commands.empty())){
+				_all_commands.emplace_back(std::move(_line_commands));
+			}
+
+		}
+		//print
+		if (!_all_commands.empty()) {
+			out_and_clear_bulk();
+		}
+	}
 };
 
 int main(int argc, char** argv) {
-	std::stringstream num_arg;
-	int num_commands {0}, number_brackets {0};
-	std::vector<std::string> v_all_commands;
+	std::stringstream number_arguments;
+	int number_commands {0};
 
 	if (argc <= 1) {
-		num_arg << "Incorrect number of arguments";
+		number_arguments << "Incorrect number of arguments";
 	}
 	else
 	{
-	//	num_commands = std::stoi(argv[1]);
-		num_commands =20;
-		std::string line_commands;
-
-		while (std::cin) {
-			for (int i = 0; i < num_commands; i++) {
-				std::getline(std::cin, line_commands);
-		
-				if (std::cin.eof()) { break; }
-					
-					if (line_commands == "{") {
-						if (number_brackets == 0) {
-							print_bulk(v_all_commands);
-							v_all_commands.clear();
-						}
-						number_brackets++;
-						
-					}
-					if (line_commands == "}") {
-							number_brackets--;
-							if (number_brackets == 0) {
-								print_bulk(v_all_commands);
-								v_all_commands.clear();
-							}
-					}
-					//add command
-					if (
-						(line_commands != "{")&&
-						(line_commands != "}")&&
-						(!line_commands.empty())
-						)
-					{
-						v_all_commands.emplace_back(std::move(line_commands));
-					}
-					
-			}
-			//print
-			if (!v_all_commands.empty()) {
-				print_bulk(v_all_commands);
-				v_all_commands.clear();
+		try {
+			number_commands = std::stoi(argv[1]);
+			if (number_commands <= 0) {
+				std::cout << "Number of commands in bulk must be positive";
 			}
 		}
-		
+		catch (const std::exception& error_command) {
+			std::cerr << error_command.what();
+		}
 	}
-
+	Accumulator_Commands com(number_commands);
+	com.process_commands();
 	std::cin.get();
 }
