@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <sstream>
-
 #include "Accumulator_Commands.h"
 
 int main(int argc, char** argv) {
