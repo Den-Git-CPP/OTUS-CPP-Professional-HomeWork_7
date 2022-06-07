@@ -6,20 +6,10 @@ bool Accumulator_Commands::empty() {
 
 void Accumulator_Commands::add_commands() {
 	using namespace std::chrono;
-	if (empty()) {
-		time_first_command = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
+	if(empty()) {
+		_time_first_command = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
 	}
 	_all_commands.emplace_back(std::move(_commands));
-}
-
-void Accumulator_Commands::out_bulk() {
-	if (!_all_commands.empty()) {
-		std::cout << "\tbulk: ";
-		for (auto elem : _all_commands) {
-			std::cout << elem << ", ";
-		};
-		std::cout << '\n';
-	}
 }
 
 void Accumulator_Commands::clear_bulk() {
@@ -28,69 +18,73 @@ void Accumulator_Commands::clear_bulk() {
 }
 
 void Accumulator_Commands::out_and_clear_bulk() {
-	out_bulk();
+	notify_subscriber();
 	clear_bulk();
 }
 
 void Accumulator_Commands::work_with_commands() {
 
-	while (std::cin) {
-		while (0 < _number_commands) {
+	while(std::cin) {
+		while(0 < _number_commands) {
 			std::getline(std::cin, _commands);
 
-			if (std::cin.eof()) {
+			if(std::cin.eof()) {
 				break;
 			}
 
-			if ((_commands != "{") &&
-				(_commands != "}") &&
-				(!_commands.empty())) {
-				if (_number_brackets > 0) {
+			if((_commands != "{") &&
+			   (_commands != "}") &&
+			   (!_commands.empty())) {
+				if(_number_brackets > 0) {
 					add_commands();
 				}
-				else
-				{
+				else {
 					_number_commands--;
 					add_commands();
 				}
 			}
 
-			if (_commands == "{") {
-				if ((_number_brackets == 0) &&
-					(!_all_commands.empty())
-					) {
+			if(_commands == "{") {
+				if((_number_brackets == 0) &&
+				   (!_all_commands.empty())
+				   ) {
 					out_and_clear_bulk();
 				}
 				_number_brackets++;
 			}
-			if (_commands == "}") {
-				if (_number_brackets <= 0) {
+			if(_commands == "}") {
+				if(_number_brackets <= 0) {
 					std::cerr << "Warning: Unexpected bracket\n";
 				}
-				else
-				{
+				else {
 					_number_brackets--;
-					if (_number_brackets <= 0) {
+					if(_number_brackets <= 0) {
 						out_and_clear_bulk();
 					}
 				}
 			}
 		}
 
-		if (_number_brackets == 0) {
+		if(_number_brackets == 0) {
 			out_and_clear_bulk();
 		}
 	}
 }
 
-void Accumulator_Commands::add_subscriber(Observer* ob) {
-	subscriber.push_back(ob);
+void Accumulator_Commands::add_subscriber(Observer* obs) {
+	subscriber.push_back(obs);
+}
+
+void Accumulator_Commands::remove_subscriber(Observer* ob) {
+	for(auto elem : subscriber) {
+		elem->~Observer();
+	}
+	subscriber.clear();
 }
 
 void Accumulator_Commands::notify_subscriber() {
-	for (auto const& ob : subscriber){
-		ob->set_data(this);
-		ob->notify();
+	for(auto elem : subscriber) {
+		elem->notify(_time_first_command, _all_commands);
 	}
 }
 
