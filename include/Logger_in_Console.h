@@ -12,7 +12,7 @@ public:
 		loger->add_subscriber(this);
 	}
 	~Logger_in_Console() = default;
-	
+
 	void notify(const long long int& time_first_command,
 				const std::vector<std::string>& v_stream_command);
 

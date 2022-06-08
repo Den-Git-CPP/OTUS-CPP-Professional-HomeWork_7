@@ -22,7 +22,7 @@ public:
 	void work_with_commands();
 
 	void add_subscriber(Observer* ob);
-	void remove_subscriber(Observer* ob);
+	void remove_subscriber();
 	void notify_subscriber();
 
 private:
@@ -35,5 +35,4 @@ private:
 	std::vector<std::string> _all_commands;
 
 	std::vector<Observer*> subscriber;
-
 };

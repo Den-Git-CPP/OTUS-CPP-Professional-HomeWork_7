@@ -13,7 +13,7 @@ public:
 	Logger_in_File(Accumulator_Commands* loger) {
 		loger->add_subscriber(this);
 	}
-	~Logger_in_File() = default;
+	~Logger_in_File()=default;
 
 	void notify(const long long int& time_first_command,
 				const std::vector<std::string>& v_stream_command);

@@ -21,7 +21,6 @@ int main(int argc, char** argv) {
 		}
 	}
 
-
 	Accumulator_Commands accumulator(number_commands_in_pull);
 	Logger_in_Console log_in_console(&accumulator);
 	Logger_in_File log_in_file(&accumulator);

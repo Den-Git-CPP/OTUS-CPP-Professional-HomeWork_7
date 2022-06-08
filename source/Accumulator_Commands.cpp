@@ -75,10 +75,7 @@ void Accumulator_Commands::add_subscriber(Observer* obs) {
 	subscriber.push_back(obs);
 }
 
-void Accumulator_Commands::remove_subscriber(Observer* ob) {
-	for(auto elem : subscriber) {
-		elem->~Observer();
-	}
+void Accumulator_Commands::remove_subscriber() {
 	subscriber.clear();
 }
 
@@ -87,6 +84,3 @@ void Accumulator_Commands::notify_subscriber() {
 		elem->notify(_time_first_command, _all_commands);
 	}
 }
-
-
-
