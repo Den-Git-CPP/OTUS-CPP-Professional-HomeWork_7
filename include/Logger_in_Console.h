@@ -4,15 +4,27 @@
 
 #include"Observer.h"
 #include "Accumulator_Commands.h"
-
+/**
+ * @brief Класс-подписчик для вывода данных в консоль
+ * 
+ */
 class Logger_in_Console: public Observer
 {
 public:
+/**
+ * @brief Перегруженный конструктор для подписки в классе издателя
+ * 
+ */
 	Logger_in_Console(Accumulator_Commands* loger) {
 		loger->add_subscriber(this);
 	}
 	~Logger_in_Console() = default;
-
+/**
+ * @brief Фуункция вывода в консоль данных
+ * 
+ * @param time_first_command время первой командв(не используется)
+ * @param v_stream_command  все веденные команды для вывода в консоль
+ */
 	void notify(const long long int& time_first_command,
 				const std::vector<std::string>& v_stream_command);
 
