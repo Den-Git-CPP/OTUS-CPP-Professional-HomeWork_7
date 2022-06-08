@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Command_Packetge: Исходный файл include/Accumulator_Commands.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Command_Packetge<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+   <div id="projectbrief">Программа для пакетной обработки команд.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Accumulator_Commands.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_accumulator___commands_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_observer_8h.html">Observer.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_accumulator___commands.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_accumulator___commands.html">Accumulator_Commands</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_accumulator___commands.html#acdd1adad1cfca5b0870ae901a2699a97">   22</a></span>    <a class="code hl_function" href="class_accumulator___commands.html#acdd1adad1cfca5b0870ae901a2699a97">Accumulator_Commands</a>(<span class="keywordtype">int</span> commands_in_pull)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        : _number_commands_in_pull{commands_in_pull}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_function" href="class_accumulator___commands.html#a7ba8a1ae445be0ea18ad298305f4df92">clear_bulk</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    };</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_accumulator___commands.html#a47838eb4808f80d2f81ad8baf35a8de2">   27</a></span>    <a class="code hl_function" href="class_accumulator___commands.html#a47838eb4808f80d2f81ad8baf35a8de2">~Accumulator_Commands</a>(){};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_accumulator___commands.html#a2b77a96d5c16fe148f063633302ee948">empty</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#a77517848bbcfccda6671ec92f2d3fca8">add_commands</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#a7ba8a1ae445be0ea18ad298305f4df92">clear_bulk</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#afdfe19152e179919340830a00e919985">out_and_clear_bulk</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#a521ec0c552ea2f331d0fa08f49ea6690">work_with_commands</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#a458b835c76d9684e45ccde63b69412cd">add_subscriber</a>(<a class="code hl_class" href="class_observer.html">Observer</a> *ob);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#aeda354b2afa7535952b1f49f6781cdb0">remove_subscriber</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_accumulator___commands.html#a1c1ccb000d123c383c2cfb05c2b60f60">notify_subscriber</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_class" href="class_accumulator___commands.html">Accumulator_Commands</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> _number_commands{0};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> _number_commands_in_pull{0};</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> _number_brackets{0};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _time_first_command{0};</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    std::string _commands{};</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    std::vector&lt;std::string&gt; _all_commands;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::vector&lt;Observer *&gt; subscriber;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
+<div class="ttc" id="a_observer_8h_html"><div class="ttname"><a href="_observer_8h.html">Observer.h</a></div></div>
+<div class="ttc" id="aclass_accumulator___commands_html"><div class="ttname"><a href="class_accumulator___commands.html">Accumulator_Commands</a></div><div class="ttdoc">Класс накапливает пачку команд и раздает подписчикам информацию о накопленных данных</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.h:14</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a1c1ccb000d123c383c2cfb05c2b60f60"><div class="ttname"><a href="class_accumulator___commands.html#a1c1ccb000d123c383c2cfb05c2b60f60">Accumulator_Commands::notify_subscriber</a></div><div class="ttdeci">void notify_subscriber()</div><div class="ttdoc">функция оповещает о накопленных команда подписчиков</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:82</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a2b77a96d5c16fe148f063633302ee948"><div class="ttname"><a href="class_accumulator___commands.html#a2b77a96d5c16fe148f063633302ee948">Accumulator_Commands::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">функция определяет состояние накопителя команд</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:3</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a458b835c76d9684e45ccde63b69412cd"><div class="ttname"><a href="class_accumulator___commands.html#a458b835c76d9684e45ccde63b69412cd">Accumulator_Commands::add_subscriber</a></div><div class="ttdeci">void add_subscriber(Observer *ob)</div><div class="ttdoc">функция добавляет подписчика класса Observer</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:74</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a47838eb4808f80d2f81ad8baf35a8de2"><div class="ttname"><a href="class_accumulator___commands.html#a47838eb4808f80d2f81ad8baf35a8de2">Accumulator_Commands::~Accumulator_Commands</a></div><div class="ttdeci">~Accumulator_Commands()</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.h:27</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a521ec0c552ea2f331d0fa08f49ea6690"><div class="ttname"><a href="class_accumulator___commands.html#a521ec0c552ea2f331d0fa08f49ea6690">Accumulator_Commands::work_with_commands</a></div><div class="ttdeci">void work_with_commands()</div><div class="ttdoc">функция обрабатывает введенные команды</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:25</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a77517848bbcfccda6671ec92f2d3fca8"><div class="ttname"><a href="class_accumulator___commands.html#a77517848bbcfccda6671ec92f2d3fca8">Accumulator_Commands::add_commands</a></div><div class="ttdeci">void add_commands()</div><div class="ttdoc">функция добавляет введенную команду в накопитель</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:7</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_a7ba8a1ae445be0ea18ad298305f4df92"><div class="ttname"><a href="class_accumulator___commands.html#a7ba8a1ae445be0ea18ad298305f4df92">Accumulator_Commands::clear_bulk</a></div><div class="ttdeci">void clear_bulk()</div><div class="ttdoc">функция очищает накопитель от введенных ранее команд</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:15</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_acdd1adad1cfca5b0870ae901a2699a97"><div class="ttname"><a href="class_accumulator___commands.html#acdd1adad1cfca5b0870ae901a2699a97">Accumulator_Commands::Accumulator_Commands</a></div><div class="ttdeci">Accumulator_Commands(int commands_in_pull)</div><div class="ttdoc">Перегруженный конструктор класса для создания с заданным количеством команд</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.h:22</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_aeda354b2afa7535952b1f49f6781cdb0"><div class="ttname"><a href="class_accumulator___commands.html#aeda354b2afa7535952b1f49f6781cdb0">Accumulator_Commands::remove_subscriber</a></div><div class="ttdeci">void remove_subscriber()</div><div class="ttdoc">функция очищает очередб подписчиков</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:78</div></div>
+<div class="ttc" id="aclass_accumulator___commands_html_afdfe19152e179919340830a00e919985"><div class="ttname"><a href="class_accumulator___commands.html#afdfe19152e179919340830a00e919985">Accumulator_Commands::out_and_clear_bulk</a></div><div class="ttdeci">void out_and_clear_bulk()</div><div class="ttdoc">функция очищает накопитель от введенных ранее команд</div><div class="ttdef"><b>Definition:</b> Accumulator_Commands.cpp:20</div></div>
+<div class="ttc" id="aclass_observer_html"><div class="ttname"><a href="class_observer.html">Observer</a></div><div class="ttdef"><b>Definition:</b> Observer.h:4</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
