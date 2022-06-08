@@ -17,6 +17,7 @@ public:
 				const std::vector<std::string>& v_stream_command);
 
 private:
+	long long int _time_first_command{0};
 	Logger_in_Console() = default;
 	Logger_in_Console(const Logger_in_Console& root) = delete;
 	Logger_in_Console& operator=(const Logger_in_Console&) = delete;
